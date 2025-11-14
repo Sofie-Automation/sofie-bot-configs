@@ -1,0 +1,12 @@
+pull_request_rules:
+  - name: Request review from user
+    description: Request review from a specific user when checks are green.
+    conditions:
+      - -closed
+      - "#approved-reviews-by = 0"
+      - "#changes-requested-reviews-by = 0"
+      - review-requested != siljekristensen
+    actions:
+      request_reviews:
+        users:
+          - siljekristensen
