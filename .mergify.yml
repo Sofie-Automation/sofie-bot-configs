@@ -10,3 +10,14 @@ pull_request_rules:
       request_reviews:
         users:
           - siljekristensen
+  - name: Automatic approval of PRs
+    description: Automatically approve PRs that are older than 7 days with no reviews, and are authored by organisation members
+    conditions:
+      - -closed
+      - -draft
+      - author=@code-owners
+      - updated-at > 7 days 0 hours 0 minutes ago
+    actions:
+      review:
+        type: APPROVE
+        message: This PR has been automatically approved
